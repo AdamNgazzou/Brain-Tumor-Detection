@@ -12,8 +12,7 @@ load_dotenv()  # Load environment variables from .env
 
 app = FastAPI()
 
-frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:3000")
-
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "https://brain-tumor-detection-blue.vercel.app")  
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[frontend_origin],  # Uses env variable
