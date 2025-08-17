@@ -73,7 +73,7 @@ function DetectionApp() {
 
     setIsAnalyzing(true)
 
-    // Si    uvicorn main:app --reload --host 0.0.0.0 --port 8000ate AI analysis (replace with actual API call)
+    // Simulate AI analysis (replace with actual API call)
     await new Promise((resolve) => setTimeout(resolve, 3000))
 
     // Mock result (replace with actual AI model response)
@@ -312,7 +312,7 @@ function DetectionApp() {
           </CardHeader>
           <CardContent className="space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border-0 bg-gradient-to-br from-muted/30 to-muted/10 shadow-lg">
+              <Card className="border-0 bg-gradient-to-br from-muted/50 to-muted/30 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg font-work-sans mb-4 flex items-center gap-2">
                     <Zap className="h-5 w-5 text-secondary" />
@@ -339,7 +339,7 @@ function DetectionApp() {
                 </CardContent>
               </Card>
 
-              <Card className="border-0 bg-gradient-to-br from-muted/30 to-muted/10 shadow-lg">
+              <Card className="border-0 bg-gradient-to-br from-muted/50 to-muted/30 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg font-work-sans mb-4 flex items-center gap-2">
                     <FileImage className="h-5 w-5 text-secondary" />
@@ -411,7 +411,7 @@ export default function LandingPage() {
               <div className="p-2 bg-gradient-to-br from-secondary to-accent rounded-xl animate-pulse-glow">
                 <Brain className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-bold font-work-sans">NeuroScan AI</span>
+              <span className="text-xl font-bold font-work-sans hidden sm:block">NeuroScan AI</span>
             </div>
             <div className="hidden md:flex items-center gap-6">
               <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -427,6 +427,13 @@ export default function LandingPage() {
                 <Button className="bg-secondary hover:bg-secondary/90">Get Started</Button>
               </Link>
             </div>
+            <div className="md:hidden">
+              <Link href="/detect">
+                <Button size="sm" className="bg-secondary hover:bg-secondary/90">
+                  Start
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -440,28 +447,35 @@ export default function LandingPage() {
               <Award className="h-4 w-4" />
               FDA-Approved AI Technology
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold font-work-sans mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-work-sans mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
               Revolutionary Brain Tumor Detection
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               Harness the power of advanced AI to analyze MRI scans with unprecedented accuracy. Get instant results and
               professional insights in seconds, not hours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link href="/detect">
-                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-lg px-8 py-6 rounded-xl">
+                <Button
+                  size="lg"
+                  className="bg-secondary hover:bg-secondary/90 text-lg px-8 py-6 rounded-xl w-full sm:w-auto"
+                >
                   Start Analysis
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 rounded-xl bg-transparent">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6 rounded-xl bg-transparent w-full sm:w-auto"
+              >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary mb-2">99.2%</div>
                 <div className="text-muted-foreground">Accuracy Rate</div>
@@ -479,7 +493,7 @@ export default function LandingPage() {
         </div>
 
         {/* Floating Brain Illustration */}
-        <div className="absolute right-10 top-32 hidden lg:block animate-float">
+        <div className="absolute right-10 top-32 hidden xl:block animate-float">
           <div className="w-32 h-32 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-full flex items-center justify-center">
             <Brain className="h-16 w-16 text-secondary" />
           </div>
@@ -490,13 +504,13 @@ export default function LandingPage() {
       <section id="features" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-work-sans mb-4">Cutting-Edge Features</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold font-work-sans mb-4">Cutting-Edge Features</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Our AI-powered platform combines advanced machine learning with medical expertise
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
@@ -564,13 +578,13 @@ export default function LandingPage() {
       <section id="how-it-works" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-work-sans mb-4">How It Works</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold font-work-sans mb-4">How It Works</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Simple, fast, and accurate brain tumor detection in three easy steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
                 1
@@ -608,13 +622,13 @@ export default function LandingPage() {
       <section id="testimonials" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold font-work-sans mb-4">Trusted by Medical Professionals</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold font-work-sans mb-4">Trusted by Medical Professionals</h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               See what leading healthcare providers say about our AI technology
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Card className="border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
@@ -689,12 +703,15 @@ export default function LandingPage() {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-secondary to-accent text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold font-work-sans mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold font-work-sans mb-4">Ready to Get Started?</h2>
+          <p className="text-lg sm:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Join thousands of medical professionals using our AI-powered brain tumor detection platform
           </p>
           <Link href="/detect">
-            <Button size="lg" className="bg-white text-secondary hover:bg-gray-100 text-lg px-8 py-6 rounded-xl">
+            <Button
+              size="lg"
+              className="bg-white text-secondary hover:bg-gray-100 text-lg px-8 py-6 rounded-xl w-full sm:w-auto"
+            >
               Start Your Analysis
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -705,14 +722,14 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="py-12 px-4 bg-card border-t border-border">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-3">
               <div className="p-2 bg-gradient-to-br from-secondary to-accent rounded-xl">
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <span className="text-xl font-bold font-work-sans">NeuroScan AI</span>
             </div>
-            <div className="text-muted-foreground text-sm">
+            <div className="text-muted-foreground text-sm text-center md:text-left">
               © 2024 NeuroScan AI. All rights reserved. | Privacy Policy | Terms of Service
             </div>
           </div>

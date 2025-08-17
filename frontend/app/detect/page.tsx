@@ -105,25 +105,27 @@ const analyzeImage = async () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background">
       <header className="bg-gradient-to-r from-card via-card/95 to-card backdrop-blur-md border-b border-border/50 shadow-lg">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <Link href="/">
-            <Button
+              <Button
                 variant="outline"
-                className="bg-transparent hover:bg-muted/50 hover:text-foreground transition-all"
+                className="bg-transparent hover:bg-muted/50 hover:text-foreground transition-all w-full sm:w-auto"
               >
                 ← Back to Home
               </Button>
             </Link>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 text-center sm:text-left">
               <div className="p-2 bg-gradient-to-br from-secondary to-accent rounded-xl animate-pulse-glow">
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold font-work-sans text-foreground">MRI Brain Tumor Detection</h1>
+                <h1 className="text-xl sm:text-2xl font-bold font-work-sans text-foreground">
+                  MRI Brain Tumor Detection
+                </h1>
                 <p className="text-muted-foreground text-sm">AI-powered medical imaging analysis</p>
               </div>
             </div>
-            <div className="w-24"></div> {/* Spacer for balance */}
+            <div className="w-24 hidden sm:block"></div>
           </div>
         </div>
       </header>
@@ -135,15 +137,15 @@ const analyzeImage = async () => {
               <div className="p-2 bg-secondary/10 rounded-lg">
                 <FileImage className="h-6 w-6 text-secondary" />
               </div>
-              <CardTitle className="text-2xl font-work-sans">Upload MRI Scan</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl font-work-sans">Upload MRI Scan</CardTitle>
             </div>
-            <CardDescription className="text-base">
+            <CardDescription className="text-sm sm:text-base">
               Upload a brain MRI image for AI-powered tumor detection analysis with instant results
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div
-              className={`border-2 border-dashed rounded-2xl p-12 text-center transition-all duration-300 ${
+              className={`border-2 border-dashed rounded-2xl p-6 sm:p-12 text-center transition-all duration-300 ${
                 dragActive
                   ? "border-secondary bg-gradient-to-br from-secondary/10 to-accent/5 scale-[1.02] shadow-lg"
                   : "border-border hover:border-secondary/50 hover:bg-muted/30"
@@ -160,7 +162,7 @@ const analyzeImage = async () => {
                       <img
                         src={URL.createObjectURL(selectedFile) || "/placeholder.svg"}
                         alt="Selected MRI scan"
-                        className="max-h-64 rounded-xl border-2 border-border shadow-lg"
+                        className="max-h-48 sm:max-h-64 rounded-xl border-2 border-border shadow-lg"
                       />
                       <div className="absolute -top-2 -right-2 bg-secondary text-white rounded-full p-2">
                         <CheckCircle className="h-4 w-4" />
@@ -168,17 +170,17 @@ const analyzeImage = async () => {
                     </div>
                   </div>
                   <div className="bg-muted/50 rounded-xl p-4">
-                    <p className="font-semibold text-foreground text-lg">{selectedFile.name}</p>
-                    <p className="text-muted-foreground">
+                    <p className="font-semibold text-foreground text-base sm:text-lg break-all">{selectedFile.name}</p>
+                    <p className="text-muted-foreground text-sm sm:text-base">
                       {(selectedFile.size / 1024 / 1024).toFixed(2)} MB • Ready for analysis
                     </p>
                   </div>
-                  <div className="flex gap-4 justify-center">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button
                       onClick={analyzeImage}
                       disabled={isAnalyzing}
                       size="lg"
-                      className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-white px-8 py-6 text-lg rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+                      className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                     >
                       {isAnalyzing ? (
                         <>
@@ -196,7 +198,7 @@ const analyzeImage = async () => {
                       variant="outline"
                       onClick={resetAnalysis}
                       size="lg"
-                      className="px-8 py-6 text-lg rounded-xl bg-transparent"
+                      className="px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl bg-transparent w-full sm:w-auto"
                     >
                       Remove
                     </Button>
@@ -205,25 +207,27 @@ const analyzeImage = async () => {
               ) : (
                 <div className="space-y-6">
                   <div className="relative">
-                    <Upload className="h-16 w-16 mx-auto text-muted-foreground animate-bounce" />
+                    <Upload className="h-12 sm:h-16 w-12 sm:w-16 mx-auto text-muted-foreground animate-bounce" />
                     <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full blur-xl opacity-50"></div>
                   </div>
                   <div>
-                    <p className="text-2xl font-semibold font-work-sans text-foreground mb-2">
+                    <p className="text-xl sm:text-2xl font-semibold font-work-sans text-foreground mb-2">
                       Drop your MRI image here
                     </p>
-                    <p className="text-muted-foreground text-lg">or click to browse files • Supports JPEG, PNG, TIFF</p>
+                    <p className="text-muted-foreground text-base sm:text-lg">
+                      or click to browse files • Supports JPEG, PNG, TIFF
+                    </p>
                   </div>
                   <input type="file" accept="image/*" onChange={handleFileSelect} className="hidden" id="file-upload" />
-                    <Button
-                      variant="outline"
-                      size="lg"
-                    className="cursor-pointer bg-transparent hover:bg-muted/50 hover:text-foreground px-8 py-6 text-lg rounded-xl transition-all duration-300 hover:scale-105"
-                    onClick={() => document.getElementById("file-upload")?.click()
-                    }                    >
-                      <FileImage className="mr-3 h-5 w-5" />
-                      Select Image
-                    </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="cursor-pointer bg-transparent hover:bg-muted/50 hover:text-foreground px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                    onClick={() => document.getElementById("file-upload")?.click()}
+                  >
+                    <FileImage className="mr-3 h-5 w-5" />
+                    Select Image
+                  </Button>
                 </div>
               )}
             </div>
@@ -233,7 +237,7 @@ const analyzeImage = async () => {
         {result && (
           <Card className="border-0 shadow-2xl bg-gradient-to-br from-card to-card/80 backdrop-blur-sm animate-fade-in">
             <CardHeader className="pb-6">
-              <CardTitle className="flex items-center gap-3 text-2xl font-work-sans">
+              <CardTitle className="flex items-center gap-3 text-xl sm:text-2xl font-work-sans">
                 {result.hasTumor ? (
                   <div className="p-2 bg-destructive/10 rounded-lg">
                     <AlertCircle className="h-6 w-6 text-destructive" />
@@ -248,29 +252,31 @@ const analyzeImage = async () => {
             </CardHeader>
             <CardContent className="space-y-8">
               <Alert
-                className={`border-2 rounded-xl p-6 ${result.hasTumor ? "border-destructive bg-destructive/5" : "border-secondary bg-secondary/5"}`}
+                className={`border-2 rounded-xl p-4 sm:p-6 ${result.hasTumor ? "border-destructive bg-destructive/5" : "border-secondary bg-secondary/5"}`}
               >
-                <AlertDescription className="text-lg font-medium">{result.message}</AlertDescription>
+                <AlertDescription className="text-base sm:text-lg font-medium">{result.message}</AlertDescription>
               </Alert>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <Card className="border-0 bg-gradient-to-br from-muted/50 to-muted/30 shadow-lg">
-                  <CardContent className="text-center p-8">
+                  <CardContent className="text-center p-6 sm:p-8">
                     <div
-                      className={`text-4xl font-bold mb-2 ${result.hasTumor ? "text-destructive" : "text-secondary"}`}
+                      className={`text-3xl sm:text-4xl font-bold mb-2 ${result.hasTumor ? "text-destructive" : "text-secondary"}`}
                     >
                       {result.hasTumor ? "⚠️" : "✅"}
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">Detection Status</p>
-                    <p className={`font-bold text-xl ${result.hasTumor ? "text-destructive" : "text-secondary"}`}>
+                    <p
+                      className={`font-bold text-lg sm:text-xl ${result.hasTumor ? "text-destructive" : "text-secondary"}`}
+                    >
                       {result.hasTumor ? "Tumor Detected" : "No Tumor Detected"}
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card className="border-0 bg-gradient-to-br from-muted/50 to-muted/30 shadow-lg">
-                  <CardContent className="text-center p-8">
-                    <div className="text-4xl font-bold text-secondary mb-2">{result.confidence}%</div>
+                  <CardContent className="text-center p-6 sm:p-8">
+                    <div className="text-3xl sm:text-4xl font-bold text-secondary mb-2">{result.confidence}%</div>
                     <p className="text-sm text-muted-foreground mb-2">Confidence Level</p>
                     <div className="w-full bg-border rounded-full h-3 mt-3">
                       <div
@@ -282,25 +288,29 @@ const analyzeImage = async () => {
                 </Card>
               </div>
 
-              <Alert className="border-2 border-amber-200 bg-amber-50 dark:bg-amber-950/20 dark:border-amber-800 rounded-xl p-6">
+              <Alert className="border-2 border-amber-200 bg-amber-50 dark:bg-amber-950/20 dark:border-amber-800 rounded-xl p-4 sm:p-6">
                 <AlertCircle className="h-5 w-5 text-amber-600" />
-                <AlertDescription className="text-base">
+                <AlertDescription className="text-sm sm:text-base">
                   <strong>Important Medical Disclaimer:</strong> This AI analysis is for informational purposes only and
                   should not replace professional medical diagnosis. Always consult with qualified medical professionals
                   for proper diagnosis and treatment decisions.
                 </AlertDescription>
               </Alert>
 
-              <div className="flex gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   onClick={resetAnalysis}
                   size="lg"
-                  className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-white px-8 py-6 text-lg rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+                  className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 >
                   <FileImage className="mr-3 h-5 w-5" />
                   Analyze Another Image
                 </Button>
-                <Button variant="outline" size="lg" className="px-8 py-6 text-lg rounded-xl bg-transparent">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl bg-transparent w-full sm:w-auto"
+                >
                   Download Report
                 </Button>
               </div>
@@ -310,7 +320,7 @@ const analyzeImage = async () => {
 
         <Card className="mt-12 border-0 shadow-xl bg-gradient-to-br from-card to-card/80">
           <CardHeader className="pb-6">
-            <CardTitle className="text-2xl font-work-sans flex items-center gap-3">
+            <CardTitle className="text-xl sm:text-2xl font-work-sans flex items-center gap-3">
               <div className="p-2 bg-secondary/10 rounded-lg">
                 <Microscope className="h-6 w-6 text-secondary" />
               </div>
@@ -318,7 +328,7 @@ const analyzeImage = async () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-8">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               <Card className="border-0 bg-gradient-to-br from-muted/30 to-muted/10 shadow-lg">
                 <CardContent className="p-6">
                   <h3 className="font-bold text-lg font-work-sans mb-4 flex items-center gap-2">
@@ -380,22 +390,22 @@ const analyzeImage = async () => {
                   <Activity className="h-5 w-5 text-secondary" />
                   Technical Specifications
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-secondary">99.2%</div>
-                    <div className="text-sm text-muted-foreground">Accuracy</div>
+                    <div className="text-xl sm:text-2xl font-bold text-secondary">99.2%</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Accuracy</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-secondary">{"< 30s"}</div>
-                    <div className="text-sm text-muted-foreground">Analysis Time</div>
+                    <div className="text-xl sm:text-2xl font-bold text-secondary">{"< 30s"}</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Analysis Time</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-secondary">50K+</div>
-                    <div className="text-sm text-muted-foreground">Scans Processed</div>
+                    <div className="text-xl sm:text-2xl font-bold text-secondary">50K+</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Scans Processed</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-secondary">24/7</div>
-                    <div className="text-sm text-muted-foreground">Availability</div>
+                    <div className="text-xl sm:text-2xl font-bold text-secondary">24/7</div>
+                    <div className="text-xs sm:text-sm text-muted-foreground">Availability</div>
                   </div>
                 </div>
               </CardContent>
