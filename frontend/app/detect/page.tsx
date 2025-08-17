@@ -60,7 +60,7 @@ const analyzeImage = async () => {
   formData.append("file", selectedFile);
 
   try {
-    const response = await fetch("http://localhost:8000/detect", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/detect`, {
       method: "POST",
       body: formData,
     });
