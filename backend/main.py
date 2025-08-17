@@ -1,21 +1,27 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
-
 from model.loader import load_model
 from utils.image import preprocess_image
 from model.predictor import predict
-
 from fastapi.middleware.cors import CORSMiddleware
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()  # Load environment variables from .env
 
 app = FastAPI()
 
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:3000")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # or ["*"] for all origins (not recommended for production)
+    allow_origins=[frontend_origin],  # Uses env variable
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Load model once at startup
 model = load_model()
